@@ -1,25 +1,51 @@
-import React from "react";
+export function WebpageUI() {
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
 
-export default function WebpageUI() {
+  const handleSubmit = () => {
+    console.log("Sending request to Google APIs with:", { email, address });
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-champagne">
-      {/* Navigation Bar */}
+    <div className="min-h-screen flex flex-col bg-champagne text-black">
       <nav className="bg-black p-4 text-champagne text-lg font-semibold shadow-md">
         My Webpage
       </nav>
 
-      {/* Main Content */}
       <main className="flex-1 flex items-center justify-center p-10">
-        <div className="bg-champagne p-6 rounded-2xl shadow-lg max-w-md text-center">
-          <h1 className="text-2xl font-bold mb-4 text-black">Welcome to My Website</h1>
-          <p className="text-black">This is a simple UI built with React and Tailwind CSS.</p>
+        <div className="bg-champagne p-8 rounded-2xl shadow-2xl max-w-lg text-center border border-black">
+          <h1 className="text-3xl font-extrabold mb-6 text-black">Welcome to My Website</h1>
+          <p className="text-lg text-black">Experience a sleek and modern design with a luxurious champagne and black theme.</p>
+          
+          <div className="mt-6 space-y-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-2 border border-black rounded-lg"
+            />
+            <input
+              type="text"
+              placeholder="Enter your street address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="w-full p-2 border border-black rounded-lg"
+            />
+            <button
+              onClick={handleSubmit}
+              className="mt-4 px-6 py-2 bg-black text-champagne rounded-lg hover:bg-opacity-80 transition"
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-black text-champagne text-center p-3">
+      <footer className="bg-black text-champagne text-center p-4 text-sm">
         &copy; 2025 My Webpage. All rights reserved.
       </footer>
     </div>
   );
 }
+
